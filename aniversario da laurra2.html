@@ -1,244 +1,238 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniversário da Laura</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(180deg, #cce6ff, #99ccff);
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniversário da Laura</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(180deg, #cce6ff, #99ccff);
+        overflow-x: hidden;
+    }
 
-        header {
-            background-color: #4d88ff;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 1.8em;
-            border-bottom: 4px solid #003d99;
-        }
+    header {
+        background-color: #4d88ff;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 1.8em;
+        border-bottom: 4px solid #003d99;
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #0059b3;
-            padding: 10px;
-            gap: 20px;
-        }
+    nav {
+        display: flex;
+        justify-content: center;
+        background-color: #0059b3;
+        padding: 10px;
+        gap: 20px;
+    }
 
-        nav button {
-            background-color: #4da6ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    nav button {
+        background-color: #4da6ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-        nav button:hover {
-            background-color: #003d99;
-        }
+    nav button:hover {
+        background-color: #003d99;
+    }
 
-        section {
-            display: none;
-            padding: 40px;
-            text-align: center;
-            max-width: 900px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            margin-top: 30px;
-            font-size: 1.2em;
-        }
+    section {
+        display: none;
+        padding: 40px;
+        text-align: center;
+        max-width: 900px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 15px;
+        margin-top: 30px;
+        font-size: 1.2em;
+    }
 
-        section.active {
-            display: block;
-        }
+    section.active {
+        display: block;
+    }
 
-        .fotos {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
+    .fotos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
 
-        .foto {
-            width: 100%;
-            height: 200px;
-            background-color: #e6f0ff;
-            border: 3px dashed #3366cc;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-style: italic;
-        }
+    .foto img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 10px;
+        border: 3px dashed #3366cc;
+    }
 
-        footer {
-            text-align: center;
-            background-color: #4d88ff;
-            color: white;
-            padding: 15px;
-            margin-top: 40px;
-        }
+    footer {
+        text-align: center;
+        background-color: #4d88ff;
+        color: white;
+        padding: 15px;
+        margin-top: 40px;
+    }
 
-        /* Borboletas */
-        .borboleta {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            background-image: url('borboleta.gif');
-            background-size: cover;
-            animation: voar 10s linear infinite;
-            pointer-events: none;
-            opacity: 0.8;
-        }
+    /* Borboletas */
+    .borboleta {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background-image: url('borboleta.gif');
+        background-size: cover;
+        animation: voar 12s linear infinite;
+        pointer-events: none;
+        opacity: 0.8;
+    }
 
-        @keyframes voar {
-            0% { transform: translateY(100vh) translateX(0); }
-            100% { transform: translateY(-10vh) translateX(50px); }
-        }
+    @keyframes voar {
+        0% { transform: translateY(100vh) translateX(0); }
+        100% { transform: translateY(-10vh) translateX(50px); }
+    }
 
-        /* Tela de acesso */
-        #tela-acesso {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(180deg, #99ccff, #4d88ff);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2em;
-            z-index: 9999;
-        }
+    /* Tela de acesso */
+    #tela-acesso {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(180deg, #99ccff, #4d88ff);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2em;
+        z-index: 9999;
+    }
 
-        #tela-acesso input {
-            margin: 10px;
-            padding: 8px;
-            border-radius: 5px;
-            border: none;
-            font-size: 1em;
-        }
+    #tela-acesso input {
+        margin: 10px;
+        padding: 8px;
+        border-radius: 5px;
+        border: none;
+        font-size: 1em;
+    }
 
-        #tela-acesso button {
-            background-color: #003d99;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1em;
-        }
+    #tela-acesso button {
+        background-color: #003d99;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1em;
+    }
 
-        #tela-acesso button:hover {
-            background-color: #002b66;
-        }
-    </style>
+    #tela-acesso button:hover {
+        background-color: #002b66;
+    }
+</style>
 </head>
 <body>
 
-    <!-- Música de fundo -->
-    <audio autoplay loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
-    </audio>
+<!-- Música de fundo -->
+<audio autoplay loop>
+    <source src="bensound-tenderness.mp3" type="audio/mpeg">
+</audio>
 
-    <!-- Tela de acesso -->
-    <div id="tela-acesso">
-        <h2>Bem-vinda, Laura</h2>
-        <p>Digite seu nome completo e sua data de nascimento:</p>
-        <input type="text" id="nome" placeholder="Seu nome">
-        <input type="text" id="data" placeholder="DD-MM-AAAA">
-        <button onclick="acessar()">Entrar</button> 
+<!-- Tela de acesso -->
+<div id="tela-acesso">
+    <h2>Bem-vinda, Laura</h2>
+    <p>Digite seu nome completo e sua data de nascimento:</p>
+    <input type="text" id="nome" placeholder="Seu nome">
+    <input type="text" id="data" placeholder="DD-MM-AAAA">
+    <button onclick="acessar()">Entrar</button> 
+</div>
+
+<header>
+    <h1>Feliz Aniversário, Laura!</h1>
+</header>
+
+<nav>
+    <button onclick="mostrar('inicio')">Início</button>
+    <button onclick="mostrar('mensagens')">Mensagens</button>
+    <button onclick="mostrar('fotos')">Fotos</button>
+    <button onclick="mostrar('declaracao')">Declaração</button>
+</nav>
+
+<section id="inicio" class="active">
+    <h2>Bem-vinda ao seu dia especial!</h2>
+    <p>Hoje celebramos não apenas mais um ano na sua vida, mas a mulher incrível que você se tornou. Laura, seus 20 anos representam uma fase linda, cheia de descobertas, sonhos e novas conquistas. Cada momento ao seu lado é uma lembrança que carrego com carinho, e neste dia tão importante, quero que você saiba o quanto é amada, admirada e especial.</p>
+    <p>Neste cantinho feito para você, espalhei borboletas e fotos para simbolizar a leveza e a beleza que você traz para minha vida. Que cada detalhe aqui te faça sentir o quanto você é única e essencial para mim.</p>
+    <div class="fotos">
+        <img src="foto1.png" alt="Foto 1">
+        <img src="foto2.jpeg" alt="Foto 2">
+        <img src="foto3.jpeg" alt="Foto 3">
     </div>
+</section>
 
-    <header>
-        <h1>Feliz Aniversário, Laura!</h1>
-    </header>
+<section id="mensagens">
+    <h2>Uma mensagem só para você</h2>
+    <p>Quero te agradecer por cada sorriso, por cada palavra carinhosa, e por cada instante que fez meus dias mais felizes.</p>
+    <p>Minha gatinha, hoje celebramos seus 20 anos de vida, de histórias, de sorrisos que transformam qualquer dia comum em algo extraordinário. Cada ano que passa, você mostra mais força, mais beleza e mais razão para ser celebrada. Que este aniversário seja apenas o início de uma nova etapa cheia de conquistas, de novos sonhos e de muito amor.</p>
+    <p>Neste espaço especial, guardei cada detalhe para homenagear quem você é: uma pessoa que ilumina, que encanta e que merece cada instante de alegria.</p>
+</section>
 
-    <nav>
-        <button onclick="mostrar('inicio')">Início</button>
-        <button onclick="mostrar('mensagens')">Mensagens</button>
-        <button onclick="mostrar('fotos')">Fotos</button>
-        <button onclick="mostrar('declaracao')">Declaração</button>
-    </nav>
+<section id="fotos">
+    <h2>Momentos inesquecíveis</h2>
+    <div class="fotos">
+        <img src="foto4.jpeg" alt="Foto 4">
+        <img src="foto5.jpeg" alt="Foto 5">
+        <img src="foto6.jpeg" alt="Foto 6">
+        <img src="foto7.jpeg" alt="Foto 7">
+        <img src="foto8.jpeg" alt="Foto 8">
+        <img src="foto9.jpeg" alt="Foto 9">
+    </div>
+</section>
 
-    <section id="inicio" class="active">
-         <h2>Bem-vinda ao seu dia especial!</h2>
-		<p>Hoje celebramos não apenas mais um ano na sua vida, mas a mulher incrível que você se tornou. Laura, seus 20 anos representam uma fase linda, cheia de descobertas, sonhos e novas conquistas. Cada momento ao seu lado é uma lembrança que carrego com carinho, e neste dia tão importante, quero que você saiba o quanto é amada, admirada e especial.</p>
-		<p>Neste cantinho feito para você, espalhei borboletas e fotos para simbolizar a leveza e a beleza que você traz para minha vida. Que cada detalhe aqui te faça sentir o quanto você é única e essencial para mim.</p>
-    </section>
+<section id="declaracao">
+    <h2>Minha declaração para você</h2>
+    <p>Oooi meu amor, cada dia ao seu lado é uma bênção. Hoje, ao comemorar seus 20 anos, quero que saiba que cada batida do meu coração guarda um espaço especial para você.</p>
+    <p>Não existem palavras que expressem totalmente o quanto você significa para mim. Cada momento ao seu lado é uma dádiva, cada olhar seu é um convite para sonhar, cada abraço seu é o lugar onde eu encontro paz. Eu não celebro apenas seu aniversário, eu celebro a sorte que tenho de estar com você. Que essa seja apenas uma das muitas datas que comemoraremos juntos, sempre com amor, carinho e cumplicidade.</p>
+    <p>Você não é apenas parte da minha vida, você é o motivo dos meus melhores sorrisos. Feliz aniversário, meu amor!</p>
+</section>
 
-    <section id="mensagens">
-        <h2>Uma mensagem só para você</h2>
-        <p>Quero te agradecer por cada sorriso, por cada palavra carinhosa, e por cada instante que fez meus dias mais felizes.</p>
-         
-        <p>Minha gatinha, hoje celebramos seus 20 anos de vida, de histórias, de sorrisos que transformam qualquer dia comum em algo extraordinário. 
-        
-        <p>Você é aquela pessoa que transforma silêncios em paz, dias cinzentos em cores, e momentos simples em lembranças eternas. 
-        Hoje, eu não quero apenas te dar os parabéns, mas agradecer por cada sorriso que você me deu, por cada conversa, cada gesto, cada carinho. 
-        Que este novo ciclo traga não só realizações, mas também aquela sensação de que você é capaz de tudo que sonha. 
-        Eu acredito em você, admiro você e tenho orgulho de te chamar de minha.</p>
-	   Cada ano que passa, você mostra mais força, mais beleza e mais razão para ser celebrada. 
-        Que este aniversário seja apenas o início de uma nova etapa cheia de conquistas, de novos sonhos e de muito amor.</p>
-        <p>Neste espaço especial, guardei cada detalhe para homenagear quem você é: uma pessoa que ilumina, que encanta e que merece cada instante de alegria.</p>
-    </section>
+<footer>
+    <p>Com amor, para sempre seu.</p>
+</footer>
 
-    <section id="fotos">
-        <h2>Momentos inesquecíveis</h2>
-        <div class="fotos">
-            <div class="foto">Foto 1</div>
-            <div class="foto">Foto 2</div>
-            <div class="foto">Foto 3</div>
-            <div class="foto">Foto 4</div>
-        </div>
-    </section>
-
-    <section id="declaracao">
-        <h2>Minha declaração para você</h2>
-        <p>Oooi meu amor, cada dia ao seu lado é uma bênção. Hoje, ao comemorar seus 20 anos, quero que saiba que cada batida do meu coração guarda um espaço especial para você.</p>
-        <p>Não existem palavras que expressem totalmente o quanto você significa para mim. 
-        Cada momento ao seu lado é uma dádiva, cada olhar seu é um convite para sonhar, cada abraço seu é o lugar onde eu encontro paz. 
-        Eu não celebro apenas seu aniversário, eu celebro a sorte que tenho de estar com você. 
-        Que essa seja apenas uma das muitas datas que comemoraremos juntos, sempre com amor, carinho e cumplicidade.</p>
-	   <p>Você não é apenas parte da minha vida, você é o motivo dos meus melhores sorrisos. Feliz aniversário, meu amor!</p>
-    </section>
-
-    <footer>
-        <p>Com amor, para sempre seu.</p>
-    </footer>
-
-    <script>
-        // Acesso
-        function acessar() {
-            const nome = document.getElementById('nome').value.toLowerCase().trim();
-            const data = document.getElementById('data').value.trim();
-            if (nome === "laura ribeiro gimenes" && data === "13-09-2005") {
-                document.getElementById('tela-acesso').style.display = 'none';
-            } else {
-                alert("Nome ou data incorretos!");
-            }
+<script>
+    // Acesso
+    function acessar() {
+        const nome = document.getElementById('nome').value.toLowerCase().trim();
+        const data = document.getElementById('data').value.trim();
+        if (nome === "laura ribeiro gimenes" && data === "13-09-2005") {
+            document.getElementById('tela-acesso').style.display = 'none';
+        } else {
+            alert("Nome ou data incorretos!");
         }
+    }
 
-        // Menu interativo
-        function mostrar(secao) {
-            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-            document.getElementById(secao).classList.add('active');
-        }
+    // Menu interativo
+    function mostrar(secao) {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.getElementById(secao).classList.add('active');
+    }
 
-        // Criar borboletas
-        for (let i = 0; i < 15; i++) {
-            let b = document.createElement('div');
-            b.classList.add('borboleta');
-            b.style.left = Math.random() * 100 + 'vw';
-            b.style.animationDuration = (12 + Math.random() * 3) + 's';
-            document.body.appendChild(b);
-        }
-    </script>
+    // Criar borboletas
+    for (let i = 0; i < 15; i++) {
+        let b = document.createElement('div');
+        b.classList.add('borboleta');
+        b.style.left = Math.random() * 100 + 'vw';
+        b.style.animationDuration = (12 + Math.random() * 3) + 's';
+        document.body.appendChild(b);
+    }
+</script>
+
 </body>
 </html>
